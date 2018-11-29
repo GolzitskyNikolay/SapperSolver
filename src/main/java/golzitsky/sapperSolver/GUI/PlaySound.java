@@ -7,14 +7,13 @@ import java.net.URL;
 
 class PlaySound {
 
-    boolean playSound = true; //if during the game we choose "Sound turn on" -> true, else -> false.
+   static boolean playSound = true; //if during the game we choose "Sound turn on" -> true, else -> false.
 
     /**
      * Play sound after win or losing.
      */
     static void playSound(URL soundFile) {
-        PlaySound playSoundObject = new PlaySound();
-        if (playSoundObject.playSound) {
+        if (playSound) {
             try {
                 AudioInputStream inAudio = AudioSystem.getAudioInputStream(soundFile);
                 Clip clip = AudioSystem.getClip();

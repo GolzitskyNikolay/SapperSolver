@@ -56,7 +56,7 @@ public class BotLogic {
     /**
      * It find indexes of not open cells around cell.
      */
-    public Queue<Integer> notOpenedCellsAroundCell(int i, Cell[] buttons, int mapSize) {
+    private Queue<Integer> notOpenedCellsAroundCell(int i, Cell[] buttons, int mapSize) {
         Queue<Integer> numbersOfButtons = new LinkedList<>();
         openOrCountNotOpenedCellsOrFlagsAroundCell(buttons, i, mapSize, numbersOfButtons, true, false);
         return numbersOfButtons;
@@ -65,7 +65,7 @@ public class BotLogic {
     /**
      * It find all indexes of flags around cell.
      */
-    public Queue<Integer> numbersOfFlagsAroundCell(int i, Cell[] buttons, int mapSize) {
+    private Queue<Integer> numbersOfFlagsAroundCell(int i, Cell[] buttons, int mapSize) {
         Queue<Integer> numbersOfFlags = new LinkedList<>();
         openOrCountNotOpenedCellsOrFlagsAroundCell(buttons, i, mapSize, numbersOfFlags, false, true);
         return numbersOfFlags;

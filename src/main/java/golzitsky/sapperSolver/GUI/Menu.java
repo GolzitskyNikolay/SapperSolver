@@ -158,15 +158,13 @@ class Menu {
 
         final JMenuItem sound = new JMenuItem("turn on/off Sound", flag5);
 
-        final PlaySound playSoundObject = new PlaySound();
-
-        if (playSoundObject.playSound) sound.setToolTipText("Sound on");
+        if (PlaySound.playSound) sound.setToolTipText("Sound on");
 
         sound.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                playSoundObject.playSound = !playSoundObject.playSound;
-                if (playSoundObject.playSound) sound.setToolTipText("Sound on");
+                PlaySound.playSound = !PlaySound.playSound;
+                if (PlaySound.playSound) sound.setToolTipText("Sound on");
                 else sound.setToolTipText("Sound off");
             }
         });

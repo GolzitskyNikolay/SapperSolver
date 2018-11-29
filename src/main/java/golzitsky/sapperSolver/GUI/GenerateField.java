@@ -1,9 +1,6 @@
 package golzitsky.sapperSolver.GUI;
 
-import golzitsky.sapperSolver.core.BotLogic;
-import golzitsky.sapperSolver.core.Cell;
-import golzitsky.sapperSolver.core.Field;
-import golzitsky.sapperSolver.core.GameLogic;
+import golzitsky.sapperSolver.core.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +16,9 @@ class GenerateField extends Field {
     int getNumberOfOpenButton() {
         return numberOfOpenButton;
     }
+
+    private Image closed = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/closed.png"));
+
     /**
      * Create array of Cells.
      */
@@ -30,7 +30,7 @@ class GenerateField extends Field {
         for (int i = 0; i < mapSize * mapSize; i++) {
             buttons[i] = new RedrawCell();
             buttons[i].setPreferredSize(new Dimension(50, 50));
-            buttons[i].setIcon(new ImageIcon("src\\main\\resources\\images\\closed.png"));
+            buttons[i].setIcon(new ImageIcon(closed));
             panel.add(buttons[i]);
         }
         generateFieldByFirstOpenButton();

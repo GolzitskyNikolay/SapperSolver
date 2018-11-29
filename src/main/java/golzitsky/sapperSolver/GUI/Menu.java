@@ -2,16 +2,14 @@ package golzitsky.sapperSolver.GUI;
 
 import golzitsky.sapperSolver.core.Field;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 class Menu {
 
-    static void createMenu(Field classField, JFrame jFrame, JPanel panel, BotMovies botMovies) throws IOException {
+    static void createMenu(Field classField, JFrame jFrame, JPanel panel, BotMovies botMovies) {
         changeIcon(jFrame);
         JMenuBar menuBar = new JMenuBar();
 
@@ -54,7 +52,8 @@ class Menu {
 
     private static void addNewGame(JMenu game, final Field classField, final JFrame jFrame,
                                    final JPanel panel, final BotMovies botMovies) {
-        ImageIcon flag1 = new ImageIcon("src\\main\\resources\\images\\reload.png");
+        ImageIcon flag1 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(
+                Menu.class.getResource("/images/reload.png")));
         JMenuItem newGame = new JMenuItem("Start New Game", flag1);
         newGame.addActionListener(new ActionListener() {
             @Override
@@ -67,7 +66,8 @@ class Menu {
 
     private static void addDifficulty(JMenu settings, final Field classField, final JFrame jFrame,
                                       final JPanel panel, final BotMovies botMovies) {
-        ImageIcon flag2 = new ImageIcon("src\\main\\resources\\images\\settings.png");
+        ImageIcon flag2 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(
+                Menu.class.getResource("/images/settings.png")));
         JMenuItem difficult = new JMenuItem("Difficulty", flag2);
         difficult.setToolTipText("You can choose number of chanceOfBombs");
         difficult.addActionListener(new ActionListener() {
@@ -81,7 +81,8 @@ class Menu {
 
     private static void addSizeOfMap(JMenu settings, final Field classField, final JFrame jFrame,
                                      final JPanel panel, final BotMovies botMovies) {
-        ImageIcon flag3 = new ImageIcon("src\\main\\resources\\images\\field.png");
+        ImageIcon flag3 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(
+                Menu.class.getResource("/images/field.png")));
         JMenuItem sizeOfMap = new JMenuItem("Size of map", flag3);
         sizeOfMap.setToolTipText("You can choose map size of the playing field");
         sizeOfMap.addActionListener(new ActionListener() {
@@ -138,7 +139,8 @@ class Menu {
     }
 
     private static void addExit(JMenu game) {
-        ImageIcon flag4 = new ImageIcon("src\\main\\resources\\images\\exit.png");
+        ImageIcon flag4 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(
+                Menu.class.getResource("/images/exit.png")));
         JMenuItem exit = new JMenuItem("Exit", flag4);
         exit.addActionListener(new ActionListener() {
             @Override
@@ -151,7 +153,8 @@ class Menu {
 
     private static void addSound(JMenu settings) {
 
-        ImageIcon flag5 = new ImageIcon("src\\main\\resources\\images\\volume.png");
+        ImageIcon flag5 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(
+                Menu.class.getResource("/images/volume.png")));
 
         final JMenuItem sound = new JMenuItem("turn on/off Sound", flag5);
 
@@ -170,8 +173,8 @@ class Menu {
         settings.add(sound);
     }
 
-    private static void changeIcon(JFrame jFrame) throws IOException {
-        Image icon = ImageIO.read(new java.io.File("src\\main\\resources\\images\\bomb1.png"));
+    private static void changeIcon(JFrame jFrame) {
+        Image icon = Toolkit.getDefaultToolkit().getImage(Menu.class.getResource("/images/bomb1.png"));
         jFrame.setIconImage(icon);
     }
 

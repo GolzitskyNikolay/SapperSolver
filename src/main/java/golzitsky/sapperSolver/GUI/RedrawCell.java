@@ -6,23 +6,38 @@ import golzitsky.sapperSolver.core.Field;
 import golzitsky.sapperSolver.core.GameLogic;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.Queue;
 
 class RedrawCell extends Cell {
     private BotLogic botLogic = new BotLogic();
 
+    private Image foundBomb = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/foundBomb.png"));
+    private Image bombed = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/bombed.png"));
+    private Image flag = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/flag.png"));
+    private Image bomb = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/bomb.png"));
+    private Image zero = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/zero.png"));
+    private Image num1 = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/num1.png"));
+    private Image num2 = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/num2.png"));
+    private Image num3 = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/num3.png"));
+    private Image num4 = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/num4.png"));
+    private Image num5 = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/num5.png"));
+    private Image num6 = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/num6.png"));
+    private Image num7 = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/num7.png"));
+    private Image num8 = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/num8.png"));
+
     /**
      * If Bot opened cell with bomb, then this method show all bombs in field.
      */
     private void showAllBombs(Field field, int i) {
-        field.buttons[i].setIcon(new ImageIcon("src\\main\\resources\\images\\bombed.png"));
+        field.buttons[i].setIcon(new ImageIcon(bombed));
         field.allNumbersOfBombs.remove(i);
         field.allNumbersOfBombs.removeAll(field.knownNumbersOfFlags);
         for (Integer number : field.knownNumbersOfFlags) {
-            field.buttons[number].setIcon(new ImageIcon("src\\main\\resources\\images\\foundBomb.png"));
+            field.buttons[number].setIcon(new ImageIcon(foundBomb));
         }
         for (Integer number : field.allNumbersOfBombs) {
-            field.buttons[number].setIcon(new ImageIcon("src\\main\\resources\\images\\bomb.png"));
+            field.buttons[number].setIcon(new ImageIcon(bomb));
         }
     }
 
@@ -37,27 +52,27 @@ class RedrawCell extends Cell {
             field.quantityOfOpenButtons++;
             if (gameLogic.isLose(buttons[i])) showAllBombs(field, i);
             else if (buttons[i].countOfBombs == 0) {
-                buttons[i].setIcon(new ImageIcon("src\\main\\resources\\images\\zero.png"));
+                buttons[i].setIcon(new ImageIcon(zero));
                 field.numbersOfEmptyButtons.add(i);
                 botLogic.openOrCountNotOpenedCellsOrFlagsAroundCell(buttons, i, mapSize,
                         buttonsAroundEmptyButton, false, false);
             } else field.numbersOfOpenCellsWithDigit.add(i);
             if (buttons[i].countOfBombs == 1)
-                buttons[i].setIcon(new ImageIcon("src\\main\\resources\\images\\num1.png"));
+                buttons[i].setIcon(new ImageIcon(num1));
             else if (buttons[i].countOfBombs == 2)
-                buttons[i].setIcon(new ImageIcon("src\\main\\resources\\images\\num2.png"));
+                buttons[i].setIcon(new ImageIcon(num2));
             else if (buttons[i].countOfBombs == 3)
-                buttons[i].setIcon(new ImageIcon("src\\main\\resources\\images\\num3.png"));
+                buttons[i].setIcon(new ImageIcon(num3));
             else if (buttons[i].countOfBombs == 4)
-                buttons[i].setIcon(new ImageIcon("src\\main\\resources\\images\\num4.png"));
+                buttons[i].setIcon(new ImageIcon(num4));
             else if (buttons[i].countOfBombs == 5)
-                buttons[i].setIcon(new ImageIcon("src\\main\\resources\\images\\num5.png"));
+                buttons[i].setIcon(new ImageIcon(num5));
             else if (buttons[i].countOfBombs == 6)
-                buttons[i].setIcon(new ImageIcon("src\\main\\resources\\images\\num6.png"));
+                buttons[i].setIcon(new ImageIcon(num6));
             else if (buttons[i].countOfBombs == 7)
-                buttons[i].setIcon(new ImageIcon("src\\main\\resources\\images\\num7.png"));
+                buttons[i].setIcon(new ImageIcon(num7));
             else if (buttons[i].countOfBombs == 8)
-                buttons[i].setIcon(new ImageIcon("src\\main\\resources\\images\\num8.png"));
+                buttons[i].setIcon(new ImageIcon(num8));
         }
     }
 
@@ -67,7 +82,7 @@ class RedrawCell extends Cell {
     void makeFlag(Cell[] buttons, int i, Field field) {
         if (!buttons[i].isHasFlag()) {
             field.knownNumbersOfFlags.add(i);
-            buttons[i].setIcon(new ImageIcon("src\\main\\resources\\images\\flaged.png"));
+            buttons[i].setIcon(new ImageIcon(flag));
             buttons[i].setFlag(true);
         }
     }

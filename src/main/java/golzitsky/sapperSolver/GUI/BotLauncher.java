@@ -5,13 +5,12 @@ import golzitsky.sapperSolver.core.GameLogic;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 
 import static golzitsky.sapperSolver.GUI.Menu.createMenu;
 
 public class BotLauncher {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         JFrame jFrame = new JFrame();
         JPanel panel = new JPanel();
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

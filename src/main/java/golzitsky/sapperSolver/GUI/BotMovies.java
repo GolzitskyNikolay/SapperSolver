@@ -58,10 +58,10 @@ class BotMovies {
                 mapSize, field.numbersOfButtonsAroundEmptyButton, gameLogic);
         if (gameLogic.isLose(buttons[numberOfNextOpenButton])) {
             timer.stop();
-            PlaySound.playSound("src\\main\\resources\\sounds\\boom.wav");
+            PlaySound.playSound(BotMovies.class.getResource("/sounds/boom.wav"));
         } else if (gameLogic.isWin(field)) {
             timer.stop();
-            PlaySound.playSound("src\\main\\resources\\sounds\\win.wav");
+            PlaySound.playSound(BotMovies.class.getResource("/sounds/win.wav"));
         } else {
             while (!field.numbersOfButtonsAroundEmptyButton.isEmpty()) {          //open all cells around empty cell
                 redrawCell.openButton(buttons, field,
